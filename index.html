@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΑΛΓΟΡΙΘΜΙΚΗ ΕΙΚΑΣΤΙΚΗ - εισαγωγή</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">  
+</head>
+<style>
+    
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    html{
+        font-family: 'Comfortaa', Georgia, Arial, cursive, sans-serif;
+        --my-blue: rgba(0, 45, 125, 0.9);
+        --my-white: rgb(235, 230, 225);
+        --my-red: rgb(140, 0, 0);
+        --my-yellow: rgb(235, 190, 20); 
+        height: 100%;
+    }
+
+    body {
+        box-sizing: border-box;
+        background-color: #333;
+        
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    #grid-container {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr 1.2fr 1fr;
+        grid-template-rows: 2fr 1.3fr 1.8fr 1.1fr 0.6fr auto 0.9fr;
+        grid-auto-flow: row;
+        align-self: center;
+        gap: 10px;
+        height: 100%;
+        max-height: 100%;
+    }
+
+    #grid-container>div {
+        background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
+        box-sizing: border-box;
+        margin: 0;
+        padding: 10px 10px 10px 10px; 
+    }
+
+    #header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: blanchedalmond;
+        font-size: 250%;
+        font-weight: 700;
+        grid-column: 1 / 3;
+    }
+
+    #subheader {
+        font-size: 140%;
+        display: flex;
+        align-items: center;
+        grid-column: 3 / 5;
+        color: blanchedalmond;
+    }
+
+    #subheader div {
+        margin: auto;
+        width: 95%;
+    }
+
+    #quote {
+        display: flex;
+        align-items: center;
+        text-align: right;
+        grid-column: 4 / 5;
+        grid-row: 2 / 4;
+    }
+    
+    #quote>* {
+        margin: auto;
+        width: 85%;
+    }
+
+    #description {
+        color: var(--my-blue);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: 1 / 4;
+    }
+    
+    #description>div {
+        width: 95%;
+    }
+
+    #my-name {
+        color: var(--my-blue);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-column: 3 / 5;
+    }
+
+    .white {
+        background-color: var(--my-white);
+    }
+    .white2 {
+        background-color: rgb(250, 255, 230);
+    }
+    .red {
+        background-color: rgb(215, 45, 35);
+    }
+    .yellow {
+        background-color: var(--my-yellow);
+    }
+    .blue {
+        background-color: var(--my-blue);
+    }
+    .black {
+        background-color: rgb(25, 5, 15);
+    }
+
+
+    ul {
+        list-style-type: none;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 1.5rem;
+        row-gap: 0.5rem;
+        padding: 0;
+        justify-content: center;
+    }
+
+    li {
+        margin-left: 0;
+        color:blanchedalmond;
+        transition: 0.8s;
+    }
+
+    li:hover {
+        font-weight: 700;
+        color: var(--my-yellow);
+        cursor: pointer;
+    }
+
+    li:active {
+        transform: scale(0.9);
+    }
+
+</style>
+
+<body>
+    
+    <div id="grid-container">
+    
+        <div id="header" class="blue"><div>ΑΛΓΟΡΙΘΜΙΚΗ ΕΙΚΑΣΤΙΚΗ</div></div>
+    
+        <div id="subheader" class="red">
+            <div>
+            Ένα σενάριο χρησης των προγραμματιστικών γλωσσών ανάπτυξης ιστοσελίδας με οδηγό το καλλιτεχνικό ρεύμα του Νεοπλαστικισμού
+            </div>
+        </div>
+    
+        <div class="white2"></div>
+        <div class="yellow"></div>
+        <div class="black"></div>
+    
+        <div id="quote" class="yellow">
+            <div>
+                <em>"H τέχνη δεν παράγεται για κανέναν και, ταυτοχρόνως, παράγεται για τον καθένα."
+                </em><br><br>
+                Πιτ Μοντριάν (1872–1944)
+            </div>
+        </div>
+    
+        <div id="description" class="white">
+            <div>
+                Στην παρουσίαση αυτή επιχειρείται η προσομοίωση του καλλιτεχνικού ύφους έργων του Ολλανδού ζωγράφου Πιτ Μοντριάν (Piet Mondrian)-πρωτοπόρου του εικαστικού ρεύματος του Νεοπλαστικισμού-από προγραμματιστική σκοπιά. Στη θέση του καμβά χρησιμοποιείται ο φυλλομετρητής και στη θέση του πινέλου τα βασικά εργαλεία ανάπτυξης ιστοσελίδας. Σκοπός της παρουσίασης είναι μια ελάχιστη γνωριμία με τα εργαλεία αυτά: τις προγραμματιστικές γλώσσες HTML, CSS και JavaScript.
+            </div>
+        </div>
+    
+        <div class="black"></div>
+        <div class="red"> </div>
+        <div class="white2" style="grid-row: span 3;"></div>
+        <div class="white" style="grid-column: 4 / 5; grid-row: 4 / 7;"></div>
+        
+        <div class="white2" id="my-name" style="grid-column: 1 / 2; grid-row: 5 / 8;">
+            <div>Ανάπτυξη: <br>Δημοσθένης Σταλίδης, 2023</div>
+        </div>        
+        
+        <div class="yellow" style="grid-row: span 3;"></div>  
+        
+
+    
+        <div id="links" class="blue">
+            <ul>
+                <li onclick="location.href='2_hypertext.html'">HTML</li>
+                <li onclick="location.href='3_CSS.html'">CSS</li>
+                <li onclick="location.href='4_javascript.html'">JavaScript</li>
+                <li></li><!--  for alignment -->
+                <li onclick="location.href='5_mondrian_CSS_1.html'">Mondrian CSS: 1</li>
+                <li onclick="location.href='6_mondrian_CSS_2.html'">Mondrian CSS: 2</li>
+                <li onclick="location.href='7_mondrian_JS.html'">Mondrian JS</li>
+                <li onclick="location.href='8_end.html'">Επίλογος</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
