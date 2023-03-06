@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A là Mondrian, CSS 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">  
+</head>
+
+<!-- general -->
+<style>
+
+  html{
+    font-family: 'Comfortaa', Georgia, Arial, cursive, sans-serif;
+    --my-blue: rgba(0, 45, 125, 0.9);
+    --my-white: rgb(235, 230, 225);
+    --my-red: rgb(140, 0, 0);
+    --my-yellow: rgb(235, 190, 20);
+    /* background-image: linear-gradient(to bottom right, rgb(155, 190, 255), rgb(30, 180, 255)); */
+    background-image: url("icons/my_mondrian_png_dark_cropped.png");
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;    
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 1rem 0 1rem 0;
+    margin: -1rem -2rem 2rem -2rem;
+    border: 5px solid rgba(0, 0, 0, 0.6);
+    border-left: 0;
+    border-right: 0;
+  }
+
+  #subtitle {
+    display:inline-block;
+    font-size: 80%;
+  }
+
+  h1 > hr{
+    margin: 0.5rem 2rem 0.5rem 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    text-shadow: 4px 4px 6px rgb(50, 50, 50);
+    margin-top: 0;
+  }
+
+  #examples {
+    width: 70%;
+    margin: 4rem auto 4rem auto;
+    padding: 1rem 2rem 1rem 2rem;
+    background-color:whitesmoke;
+  }
+
+  #examples-header {
+    line-height: 120%;
+  }
+
+  #examples ul {
+    list-style-type: '-';
+    margin-left: -2rem;
+  }
+
+  #examples li {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }  
+
+  #art-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0 1.5rem 0;
+  }
+
+  #art-container hr {
+    width: 100%;
+  }
+
+   #links {
+    font-size: small;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 1);
+    padding: 1rem;
+  }
+
+  #links ul {
+    margin: 0 2rem 0 2rem;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+
+    column-gap: 0.5rem;
+    justify-content: center;
+    grid-auto-flow: dense;
+    margin: 0;
+    padding: 0;
+  }
+
+  #links li {
+    color:blanchedalmond;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px;
+    transition: 0.2s;
+  }
+
+  #links li:active {
+    transform: scale(0.95);
+  }
+
+  #links li:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  #links li:nth-child(1),
+  #links li:nth-child(7) {
+    background-color: var(--my-red);
+    /* border: 3px solid black; */
+  }
+
+  #links li:nth-child(2),
+  #links li:nth-child(6) {
+    background-color: var(--my-yellow);
+    color: black;
+    /* border: 3px solid black; */
+  }
+
+  #links li:nth-child(3),
+  #links li:nth-child(8) {
+    background-color: var(--my-white);
+    color: black;
+    /* border: 3px solid black; */
+  }
+
+  #links li:nth-child(4) {
+    background-color: var(--my-blue);
+    /* border: 3px solid black; */
+  }
+
+  #links li:nth-child(5) {
+    /* border: 3px solid gray; */
+    background-color: gray;
+    text-decoration: underline overline;
+    pointer-events: none;
+  }
+
+</style>
+
+<!-- 1 -->
+<style>
+
+#grid1 {
+    display: grid;
+    width: min(60vmin, 50rem);
+    aspect-ratio: 0.8;
+    gap: 1.5vmin;
+    align-items: stretch;
+    justify-items: stretch;
+    grid-template-columns: repeat(5, 10fr) 12fr 12fr 6fr;
+    grid-template-rows: 11fr repeat(5, 13fr) 11fr 6.5fr 6.5fr;
+    background-color: black;
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+
+  .cell1:nth-child(1) {
+    grid-column: span 2;
+    background-color: #E5EEEB; 
+  }
+  .cell1:nth-child(2) {
+    grid-column: span 3;
+    background-color: #F2E7D5;
+  }
+  .cell1:nth-child(3) {
+    grid-column: span 2;
+    background-color: #F2C968;
+  }
+  .cell1:nth-child(4) {
+    grid-row: span 6;
+    background-color: #FCFDE7;
+  }
+  .cell1:nth-child(5) {
+    grid-row: span 2;
+    background-color: #FBFDE7;
+  }
+  .cell1:nth-child(6) {
+    grid-column: span 4;
+    grid-row: span 4;
+    background-color: #D62D24;
+  }
+  .cell1:nth-child(7) {
+    grid-row: span 2;
+    grid-column: span 2;
+    background-color: #EDCC6B;
+  }
+  .cell1:nth-child(8) {
+    grid-row: span 3;
+    background-color: #E1EAE5;
+  }
+  .cell1:nth-child(9) {
+    grid-row: span 2;
+    background-color: #DFE5D0;
+  }
+  .cell1:nth-child(10) {
+    grid-row: span 2;
+    background-color: #F2EEE2;
+  }
+  .cell1:nth-child(11) {
+    grid-row: span 2;
+    grid-column: span 2;
+    background-color: #130409;
+  }
+  .cell1:nth-child(12) {
+    grid-column: span 2;
+    background-color: #C0BFBA;
+  }
+  .cell1:nth-child(13) {
+    grid-column: span 2;
+    background-color: #D6DEE0;
+  }
+  .cell1:nth-child(14) {
+    grid-row: span 3;
+    background-color: #F4C65A;
+  }
+  .cell1:nth-child(15) {
+    grid-column: span 2;
+    background-color: #DEE2D4;
+  }
+  .cell1:nth-child(16) {
+    grid-row: span 2;
+    grid-column: span 2;
+    background-color: #241785;
+  }
+  .cell1:nth-child(17) {
+    grid-row: span 3;
+    background-color: #D73630;
+  }
+  .cell1:nth-child(18) {
+    grid-column: span 2;
+    grid-row: span 2;
+    background-color: #E3DED9;
+  }
+  .cell1:nth-child(19) {
+    grid-column: span 2;
+    background-color: #0B0205;
+  }
+  .cell1:nth-child(20) {
+    grid-column: span 4;
+    background-color: #E0E0DF;
+  }
+</style>
+
+<!-- 2 -->
+<style>
+
+  #grid2 {
+    width: min(60vmin, 50rem);
+    aspect-ratio: 1;
+    display: grid;
+    gap: 1.5vmin;
+    background-color: #232008;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: 
+      "d e e e e f f"
+      "d e e e e f f"
+      "g e e e e h t"
+      "g e e e e h t"
+      "g i i j j k k"
+      "l i i u u m m"
+      "l n n o o m m"
+      "l n n q r s s"
+      "p p p q r s s"
+      "a a b b b c c";
+
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    transform: rotate(-90deg);
+   }
+ 
+   #shadow {
+     filter: drop-shadow(7px 7px 7px #000000);
+   }
+ 
+    #grid2 div {
+      /* background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png"); */
+      background-image: url("https://www.transparenttextures.com/patterns/low-contrast-linen.png");
+   }
+
+  .white {
+    background: #dad9d5;
+   }
+   .white2 {
+    background: rgb(250, 255, 230)
+   }
+  .grey {
+    background: #c4ccd3;
+   }
+  .yellow {
+    background: #f1c265;
+   }
+  .red {
+    background: #d93e2e;
+   }
+  .black {
+    background: #10140e;
+   }
+  .blue {
+    background: #013d6d;
+   }
+  .a {
+    grid-area: a;
+   }
+  .b {
+    grid-area: b;
+   }
+  .c {
+    grid-area: c;
+   }
+  .d {
+    grid-area: d;
+   }
+  .e {
+    grid-area: e;
+   }
+  .f {
+    grid-area: f;
+   }
+  .g {
+    grid-area: g;
+   }
+  .h {
+    grid-area: h;
+   }
+  .i {
+    grid-area: i;
+ }
+  .j {
+    grid-area: j;
+   }
+  .k {
+    grid-area: k;
+   }
+  .l {
+    grid-area: l;
+   }
+  .m {
+    grid-area: m;
+   }
+  .n {
+    grid-area: n;
+   }
+  .o {
+    grid-area: o;
+   }
+  .p {
+    grid-area: p;
+   }
+  .q {
+    grid-area: q;
+   }
+  .r {
+    grid-area: r;
+   }
+  .s {
+    grid-area: s;
+   }
+  .t {
+    grid-area: t;
+   }
+  .u {
+    grid-area: u;
+   }
+ 
+ 
+</style>
+
+<!-- 3 -->
+<style>
+  :root {
+    --very-dark-blue: #154269;
+    --dark-blue: #62949D;
+    --light-blue: #80AEAE;
+    --green-blue: #598E8A;
+    --red3: #CD372B;
+    --beige: #B3B490;
+    --yellow: #AEA375;
+    --black3: #030403;
+    --gray: #555;
+    --lining: #495861;
+    --frame-color: var(--dark-blue);
+  }
+
+
+  #frame3 {
+    box-sizing: border-box;
+    width: min(60vmin, 50rem);
+    
+    border: 1.5vmin solid var(--frame-color);
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+
+  #grid3 {
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 0.8;
+    display: grid;
+    grid-template-areas:
+    "very-dark-blue-one dark-blue-one dark-blue-one dark-blue-one yellow-one yellow-one"
+    "very-dark-blue-one black-one dark-blue-two dark-blue-two light-blue-one light-blue-two"
+    "light-blue-three light-blue-three beige-two beige-three light-blue-four light-blue-two"
+    "light-blue-three light-blue-three beige-four beige-five red-one very-dark-blue-two"
+    "very-dark-blue-three very-dark-blue-three beige-six beige-five red-one very-dark-blue-two"
+    "very-dark-blue-three very-dark-blue-three black-two black-two light-blue-five red-two"
+    "green-blue-one green-blue-one dark-blue-three dark-blue-three yellow-two red-two"
+    "green-blue-one green-blue-one light-blue-six light-blue-six light-blue-six dark-blue-four";
+    grid-template-columns: 2fr 14fr 10fr 24fr 28fr 10fr;
+    grid-template-rows: 2fr 12fr 16fr 20fr 16fr 16fr 16fr 2fr;
+    background-color: var(--lining);
+    border: 1vh solid var(--lining);
+    gap: 1vmin;
+  }
+
+  .one {
+  grid-area: very-dark-blue-one;
+  }
+
+  .two {
+  grid-area: dark-blue-one;
+  }
+
+  .three {
+  grid-area: yellow-one;
+  }
+
+  .four {
+  grid-area: black-one;
+  }
+
+  .five {
+  grid-area: dark-blue-two;
+  }
+
+  .six {
+  grid-area: light-blue-one;
+  }
+
+  .seven {
+  grid-area: light-blue-two;
+  }
+
+  .eight {
+  grid-area: light-blue-three;
+  }
+
+  .nine {
+  grid-area: beige-two;
+  }
+
+  .ten {
+  grid-area: beige-three;
+  }
+
+  .eleven {
+  grid-area: light-blue-four;
+  }
+
+  .twelve {
+  grid-area: beige-four;
+  }
+
+  .thirteen {
+  grid-area: beige-five;
+  }
+
+  .fourteen {
+  grid-area: red-one;
+  }
+
+  .fifteen {
+  grid-area: very-dark-blue-two;
+  }
+
+  .sixteen {
+  grid-area: very-dark-blue-three;
+  }
+
+  .seventeen {
+  grid-area: beige-six;
+  }
+
+  .eighteen {
+  grid-area: black-two;
+  }
+
+  .nineteen {
+  grid-area: light-blue-five;
+  }
+
+  .twenty {
+  grid-area: red-two;
+  }
+
+  .twenty-one {
+  grid-area: green-blue-one;
+  }
+
+  .twenty-two {
+  grid-area: dark-blue-three;
+  }
+
+  .twenty-three {
+  grid-area: yellow-two;
+  }
+
+  .twenty-four {
+  grid-area: light-blue-six;
+  display: flex;
+  align-items: center;
+  }
+
+  .twenty-five {
+  grid-area: dark-blue-four;
+  }
+
+  .cell3 {
+  border-radius: 1px;
+  }
+
+  .signature {
+  color: var(--gray);
+  font-family: fantasy;
+  font-size: 0.5rem;
+  letter-spacing: 2px;
+  margin-left: 2px;
+  }
+
+  .very-dark-blue {
+  background-color: var(--very-dark-blue);
+  }
+
+  .dark-blue {
+  background-color: var(--dark-blue);
+  }
+
+  .light-blue {
+  background-color: var(--light-blue);
+  }
+
+  .green-blue {
+  background-color: var(--green-blue);
+  }
+
+  .beige {
+  background-color: var(--beige);
+  }
+
+  .yellow {
+  background-color: var(--yellow);
+  }
+
+  .red3 {
+  background-color: var(--red3);
+  }
+
+  .black3 {
+  background-color: var(--black3);
+  }
+</style>
+
+<!-- 4 -->
+<style>
+
+  #grid4 {
+    width: min(60vmin, 50rem);
+    aspect-ratio: 0.8;
+    display: grid;
+    grid-template-areas: "one one two two" "three four two two" "fourhalf five six nine" "eight five six nine" "eight seven ten nine";
+    grid-gap: 2.5vmin;
+    grid-template-columns: 1fr 3fr 3fr 2fr;
+    /* grid-template-rows: 14.7fr 24.6fr 3.6fr 2fr 10fr; */
+    grid-template-rows: 5fr 8fr 1.2fr 0.7fr 3.3fr;
+    background-color: black;
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+  .one4 {
+      grid-area: one;
+  }
+  .two4 {
+      grid-area: two;
+  }
+  .three4 {
+      grid-area: three;
+  }
+  .four4 {
+      grid-area: four;
+  }
+  .fourhalf {
+      grid-area: fourhalf;
+  }
+  .five4 {
+      grid-area: five;
+  }
+  .six4 {
+      grid-area: six;
+  }
+  .seven4 {
+      grid-area: seven;
+  }
+  .eight4 {
+      grid-area: eight;
+  }
+  .nine4 {
+      grid-area: nine;
+  }
+  .ten4 {
+      grid-area: ten;
+  }
+  #grid4 > div {
+      padding: 0.5rem;
+  }
+  .ltblue1 {
+      background-color: LightBlue;
+  }
+  .ltblue2 {
+      background-color: LightSkyBlue;
+  }
+  .navy {
+      background-color: MidnightBlue;
+  }
+  .red4 {
+      background-color: Brown;
+  }
+  .ltgreen {
+      background-color: DarkSeaGreen;
+  }
+
+</style>
+
+<!-- 5 (NY) -->
+<style>
+
+  .red5 {
+    background: #c00;
+ }
+  .yellow5 {
+    background: #ec0;
+ }
+  .blue5 {
+    background: #05a;
+ }
+
+  .a1 {
+    grid-area: a1;
+ }
+  .a2 {
+    grid-area: a2;
+ }
+  .a3 {
+    grid-area: a3;
+ }
+  .a4 {
+    grid-area: a4;
+ }
+  .a5 {
+    grid-area: a5;
+ }
+  .a6 {
+    grid-area: a6;
+ }
+  .a7 {
+    grid-area: a7;
+ }
+  .a8 {
+    grid-area: a8;
+ }
+  .a9 {
+    grid-area: a9;
+ }
+  .a10 {
+    grid-area: a10;
+ }
+  .a11 {
+    grid-area: a11;
+ }
+  .a12 {
+    grid-area: a12;
+ }
+  .a13 {
+    grid-area: a13;
+ }
+  .a14 {
+    grid-area: a14;
+ }
+  .a15 {
+    grid-area: a15;
+ }
+  .a16 {
+    grid-area: a16;
+ }
+  .a17 {
+    grid-area: a17;
+ }
+  .a18 {
+    grid-area: a18;
+ }
+  .a19 {
+    grid-area: a19;
+ }
+  .a20 {
+    grid-area: a20;
+ }
+  .a21 {
+    grid-area: a21;
+ }
+  .a22 {
+    grid-area: a22;
+ }
+  .a23 {
+    grid-area: a23;
+ }
+  .a24 {
+    grid-area: a24;
+ }
+  .a25 {
+    grid-area: a25;
+ }
+  .a26 {
+    grid-area: a26;
+ }
+  .a27 {
+    grid-area: a27;
+ }
+  .a28 {
+    grid-area: a28;
+ }
+  .a29 {
+    grid-area: a29;
+ }
+  .a30 {
+    grid-area: a30;
+ }
+  .a31 {
+    grid-area: a31;
+ }
+  .a32 {
+    grid-area: a32;
+ }
+  .a33 {
+    grid-area: a33;
+ }
+  .a34 {
+    grid-area: a34;
+ }
+  .a35 {
+    grid-area: a35;
+ }
+  .a36 {
+    grid-area: a36;
+ }
+  .a37 {
+    grid-area: a37;
+ }
+  .a38 {
+    grid-area: a38;
+ }
+  .a39 {
+    grid-area: a39;
+ }
+  .a40 {
+    grid-area: a40;
+ }
+  .a41 {
+    grid-area: a41;
+ }
+  .a42 {
+    grid-area: a42;
+ }
+  .a43 {
+    grid-area: a43;
+ }
+  .a44 {
+    grid-area: a44;
+ }
+  .a45 {
+    grid-area: a45;
+ }
+  .a46 {
+    grid-area: a46;
+ }
+  .a47 {
+    grid-area: a47;
+ }
+  .a48 {
+    grid-area: a48;
+ }
+  .a49 {
+    grid-area: a49;
+ }
+  .a50 {
+    grid-area: a50;
+ }
+  .a51 {
+    grid-area: a51;
+ }
+  .a52 {
+    grid-area: a52;
+ }
+  .a53 {
+    grid-area: a53;
+ }
+  .a54 {
+    grid-area: a54;
+ }
+  .a55 {
+    grid-area: a55;
+ }
+  .a56 {
+    grid-area: a56;
+ }
+  .a57 {
+    grid-area: a57;
+ }
+  .a58 {
+    grid-area: a58;
+ }
+  .a59 {
+    grid-area: a59;
+ }
+  .a60 {
+    grid-area: a60;
+ }
+  .a61 {
+    grid-area: a61;
+ }
+  .a62 {
+    grid-area: a62;
+ }
+  .a63 {
+    grid-area: a63;
+ }
+  .a64 {
+    grid-area: a64;
+ }
+  .a65 {
+    grid-area: a65;
+ }
+  .a66 {
+    grid-area: a66;
+ }
+  .a67 {
+    grid-area: a67;
+ }
+  .a68 {
+    grid-area: a68;
+ }
+  .a69 {
+    grid-area: a69;
+ }
+  .a70 {
+    grid-area: a70;
+ }
+  .a71 {
+    grid-area: a71;
+ }
+  .a72 {
+    grid-area: a72;
+ }
+  .a73 {
+    grid-area: a73;
+ }
+  .a74 {
+    grid-area: a74;
+ }
+  .a75 {
+    grid-area: a75;
+ }
+  .a76 {
+    grid-area: a76;
+ }
+  .a77 {
+    grid-area: a77;
+ }
+  .a78 {
+    grid-area: a78;
+ }
+  .a79 {
+    grid-area: a79;
+ }
+  .a80 {
+    grid-area: a80;
+ }
+  .a81 {
+    grid-area: a81;
+ }
+  .a82 {
+    grid-area: a82;
+ }
+  .a83 {
+    grid-area: a83;
+ }
+  .a84 {
+    grid-area: a84;
+ }
+  .a85 {
+    grid-area: a85;
+ }
+  .a86 {
+    grid-area: a86;
+ }
+  .a87 {
+    grid-area: a87;
+ }
+  .a88 {
+    grid-area: a88;
+ }
+  .a89 {
+    grid-area: a89;
+ }
+  .a90 {
+    grid-area: a90;
+ }
+  .a91 {
+    grid-area: a91;
+ }
+  .a92 {
+    grid-area: a92;
+ }
+  .a93 {
+    grid-area: a93;
+ }
+  .a94 {
+    grid-area: a94;
+ }
+  .a95 {
+    grid-area: a95;
+ }
+  .a96 {
+    grid-area: a96;
+ }
+  .a97 {
+    grid-area: a97;
+ }
+  .a98 {
+    grid-area: a98;
+ }
+  .a99 {
+    grid-area: a99;
+ }
+  .a100 {
+    grid-area: a100;
+ }
+  .a101 {
+    grid-area: a101;
+ }
+  .a102 {
+    grid-area: a102;
+ }
+  .a103 {
+    grid-area: a103;
+ }
+  .a104 {
+    grid-area: a104;
+ }
+  .a105 {
+    grid-area: a105;
+ }
+  .a106 {
+    grid-area: a106;
+ }
+  .a107 {
+    grid-area: a107;
+ }
+  .a108 {
+    grid-area: a108;
+ }
+  .a109 {
+    grid-area: a109;
+ }
+  .a110 {
+    grid-area: a110;
+ }
+  .a111 {
+    grid-area: a111;
+ }
+  .a112 {
+    grid-area: a112;
+ }
+  .a113 {
+    grid-area: a113;
+ }
+  .a114 {
+    grid-area: a114;
+ }
+  .a115 {
+    grid-area: a115;
+ }
+  .a116 {
+    grid-area: a116;
+ }
+  .a117 {
+    grid-area: a117;
+ }
+  .a118 {
+    grid-area: a118;
+ }
+  .a119 {
+    grid-area: a119;
+ }
+  .a120 {
+    grid-area: a120;
+ }
+  .a121 {
+    grid-area: a121;
+ }
+  .a122 {
+    grid-area: a122;
+ }
+  .a123 {
+    grid-area: a123;
+ }
+  .a124 {
+    grid-area: a124;
+ }
+  .a125 {
+    grid-area: a125;
+ }
+  .a126 {
+    grid-area: a126;
+ }
+  .a127 {
+    grid-area: a127;
+ }
+  .a128 {
+    grid-area: a128;
+ }
+  .a129 {
+    grid-area: a129;
+ }
+  .a130 {
+    grid-area: a130;
+ }
+  .a131 {
+    grid-area: a131;
+ }
+  .a132 {
+    grid-area: a132;
+ }
+  .a133 {
+    grid-area: a133;
+ }
+  .a134 {
+    grid-area: a134;
+ }
+  .a135 {
+    grid-area: a135;
+ }
+  .a136 {
+    grid-area: a136;
+ }
+  .a137 {
+    grid-area: a137;
+ }
+  .a138 {
+    grid-area: a138;
+ }
+  .a139 {
+    grid-area: a139;
+ }
+  .a140 {
+    grid-area: a140;
+ }
+  .a141 {
+    grid-area: a141;
+ }
+  .a142 {
+    grid-area: a142;
+ }
+  .a143 {
+    grid-area: a143;
+ }
+  .a144 {
+    grid-area: a144;
+ }
+  .a145 {
+    grid-area: a145;
+ }
+  .a146 {
+    grid-area: a146;
+ }
+  .a147 {
+    grid-area: a147;
+ }
+  .a148 {
+    grid-area: a148;
+ }
+  .a149 {
+    grid-area: a149;
+ }
+  .a150 {
+    grid-area: a150;
+ }
+  .a151 {
+    grid-area: a151;
+ }
+  .a152 {
+    grid-area: a152;
+ }
+  .a153 {
+    grid-area: a153;
+ }
+  .a154 {
+    grid-area: a154;
+ }
+  .a155 {
+    grid-area: a155;
+ }
+ 
+  #grid5-ny {
+    display: grid;
+    grid: ' . a1 . a122 . a2 . a123 . a3 . a4 . a5 . a6 . a7 . a124 . a8 . ' 18fr ' a125 a1 a126 a126 a126 a2 a127 a123 a128 a3 a129 a4 a130 a5 a131 a6 a132 a7 a133 a124 a134 a8 a135' 25fr ' . a1 . a78 . a2 . a123 . a3 . a4 . a5 . a6 . a7 . a124 . a8 . ' 25fr ' a9 a1 a10 a10 a10 a2 a11 a123 a12 a3 a13 a4 a14 a5 a15 a6 a16 a7 a17 a17 a17 a8 a18 ' 25fr ' . a1 . a79 . a2 . a123 . a3 . a4 . a5 . a6 . a7 . a136 . a8 . ' 10fr ' a80 a1 a81 a79 a82 a2 a83 a123 a84 a3 a85 a4 a86 a5 a87 a6 a88 a7 a89 a136 a90 a8 a91 ' 24fr ' . a1 . a79 . a2 . a123 . a3 . a4 . a5 . a6 . a7 . a136 . a8 . ' 135fr ' a19 a1 a20 a20 a20 a2 a21 a21 a21 a3 a22 a4 a23 a5 a24 a6 a25 a7 a26 a136 a27 a8 a28 ' 27fr ' . a1 . a92 . a2 . a137 . a3 . a4 . a5 . a6 . a7 . a136 . a8 . ' 190fr ' a93 a93 a93 a93 a93 a2 a94 a137 a95 a3 a96 a4 a97 a5 a98 a6 a99 a7 a100 a136 a101 a8 a102' 26fr ' . a29 . a103 . a2 . a137 . a3 . a4 . a5 . a6 . a7 . a136 . a8 . ' 11fr ' a30 a29 a31 a31 a31 a2 a32 a32 a32 a3 a33 a4 a34 a5 a35 a6 a36 a7 a37 a37 a37 a8 a38 ' 26fr ' . a29 . a104 . a2 . a138 . a3 . a4 . a5 . a6 . a7 . a139 . a8 . ' 194fr ' a39 a29 a40 a40 a40 a2 a41 a138 a42 a3 a43 a4 a44 a5 a45 a6 a46 a7 a47 a47 a47 a8 a48 ' 28fr ' . a29 . a105 . a2 . a138 . a3 . a4 . a5 . a6 . a7 . a140 . a8 . ' 19fr ' a141 a29 a142 a142 a142 a142 a142 a138 a143 a3 a144 a4 a145 a5 a146 a6 a147 a7 a148 a140 a149 a8 a150' 27fr ' . a29 . a106 . a49 . a138 . a3 . a4 . a5 . a6 . a7 . a140 . a8 . ' 128fr ' a50 a29 a51 a51 a51 a49 a52 a52 a52 a3 a53 a4 a54 a5 a55 a6 a56 a7 a57 a57 a57 a8 a58 ' 27fr ' . a29 . a107 . a49 . a151 . a3 . a4 . a5 . a6 . a7 . a152 . a8 . ' 48fr ' a59 a29 a60 a60 a60 a49 a61 a61 a61 a3 a62 a4 a63 a5 a64 a6 a65 a7 a66 a66 a66 a8 a67 ' 28fr ' . a29 . a108 . a49 . a153 . a3 . a4 . a5 . a6 . a7 . a154 . a8 . ' 61fr ' a109 a29 a110 a110 a110 a49 a111 a153 a112 a3 a113 a4 a114 a5 a115 a6 a116 a7 a117 a154 a118 a8 a119' 25fr ' . a29 . a120 . a49 . a153 . a3 . a4 . a5 . a6 . a7 . a154 . a8 . ' 18fr ' a68 a29 a69 a69 a69 a49 a70 a153 a71 a3 a72 a4 a73 a5 a74 a6 a75 a7 a76 a76 a76 a8 a77 ' 28fr ' . a29 . a121 . a49 . a153 . a3 . a4 . a5 . a6 . a7 . a155 . a8 . ' 20fr / 23fr 24fr 23fr 24fr 18fr 24fr 218fr 25fr 82fr 25fr 240fr 24fr 62fr 25fr 81fr 24fr 38fr 19fr 53fr 24fr 17fr 24fr 25fr;
+    width: min(60vmin, 50rem);
+    aspect-ratio: 0.8;
+    background: #e2e3ef;
+    box-shadow: 5px 5px 15px 5px black;
+  }
+ 
+</style>
+
+<!-- 6 -->
+<style>
+
+  :root {
+     --color-canvas: #f4f4e8;
+     --color-pink: #dd2468;
+     --color-blue: #012a97;
+     --color-orange: #d96a54;
+     --color-black: #2e3231;
+     --color-stripe: #4c1f0c;
+  }
+  
+  
+   #grid6 {
+    display: grid;
+    grid-template-columns: repeat(48, 1fr);
+    grid-template-rows: repeat(48, 1fr);
+    width: min(60vmin, 50rem);
+    aspect-ratio: 0.8;
+    padding: 1px 4px;
+    background: var(--color-canvas);
+    /* border: 1px solid var(--color-stripe); */
+    box-shadow: 5px 5px 15px 5px black;
+
+  }
+  
+   .pink6 {
+     background: var(--color-pink);
+  }
+   .blue6 {
+     background: var(--color-blue);
+  }
+   .orange6 {
+     background: var(--color-orange);
+  }
+   .black6 {
+     background: var(--color-black);
+     z-index: 1;
+  }
+   .pink__1 {
+     grid-column: 16 / span 6;
+     grid-row: 1 / span 2;
+  }
+   .pink__2 {
+     grid-column: 38 / span 6;
+     grid-row: 5 / span 5;
+     z-index: 1;
+  }
+   .pink__3 {
+     grid-column: 22 / span 7;
+     grid-row: 13 / span 7;
+  }
+   .pink__4 {
+     grid-column: 30 / span 5;
+     grid-row: 22 / span 5;
+  }
+   .pink__5 {
+     grid-column: 10 / span 6;
+     grid-row: 29 / span 5;
+  }
+   .pink__6 {
+     grid-column: 18 / span 6;
+     grid-row: 38 / span 4;
+  }
+   .blue__1 {
+     grid-column: 24 / span 5;
+     grid-row: 3 / span 4;
+     z-index: 1;
+  }
+   .blue__2 {
+     grid-column: 36 / span 5;
+     grid-row: 8 / span 4;
+  }
+   .blue__3 {
+     grid-column: 14 / span 6;
+     grid-row: 12 / span 5;
+  }
+   .blue__4 {
+     grid-column: 37 / span 5;
+     grid-row: 16 / span 5;
+  }
+   .blue__5 {
+     grid-column: 46 / span 3;
+     grid-row: 14 / span 4;
+  }
+   .blue__6 {
+     grid-column: 6 / span 8;
+     grid-row: 22 / span 4;
+  }
+   .blue__7 {
+     grid-column: 42 / span 5;
+     grid-row: 24 / span 5;
+  }
+   .blue__8 {
+     grid-column: 28 / span 5;
+     grid-row: 28 / span 5;
+  }
+   .orange__1 {
+     grid-column: 32 / span 5;
+     grid-row: 1 / span 1;
+  }
+   .orange__2 {
+     grid-column: 26 / span 7;
+     grid-row: 6 / span 6;
+  }
+   .orange__3 {
+     grid-column: 5 / span 4;
+     grid-row: 9 / span 4;
+  }
+   .orange__4 {
+     grid-column: 12 / span 4;
+     grid-row: 10 / span 4;
+  }
+   .orange__5 {
+     grid-column: 13 / span 5;
+     grid-row: 20 / span 5;
+     border: 1px solid var(--color-canvas);
+  }
+   .orange__6 {
+     grid-column: 30 / span 5;
+     grid-row: 18 / span 4;
+  }
+   .orange__7 {
+     grid-column: 42 / span 5;
+     grid-row: 18 / span 4;
+  }
+   .orange__8 {
+     grid-column: 35 / span 5;
+     grid-row: 23 / span 8;
+  }
+   .orange__9 {
+     grid-column: 21 / span 5;
+     grid-row: 31 / span 5;
+  }
+   .orange__10 {
+     grid-column: 15 / span 6;
+     grid-row: 36 / span 5;
+  }
+   .orange__11 {
+     grid-column: 29 / span 5;
+     grid-row: 41 / span 4;
+  }
+   .black__1 {
+     grid-column: 16 / span 2;
+     grid-row: 4 / span 1;
+  }
+   .black__1 {
+     grid-column: 16 / span 2;
+     grid-row: 4 / span 1;
+  }
+   .black__2 {
+     grid-column: 26 / span 1;
+     grid-row: 6 / span 2;
+  }
+   .black__3 {
+     grid-column: 32 / span 2;
+     grid-row: 8 / span 1;
+  }
+   .black__4 {
+     grid-column: 11 / span 2;
+     grid-row: 8 / span 1;
+  }
+   .black__5 {
+     grid-column: 19 / span 1;
+     grid-row: 11 / span 2;
+  }
+   .black__6 {
+     grid-column: 30 / span 1;
+     grid-row: 11 / span 2;
+  }
+   .black__7 {
+     grid-column: 27 / span 1;
+     grid-row: 15 / span 3;
+  }
+   .black__8 {
+     grid-column: 20 / span 1;
+     grid-row: 18 / span 2;
+  }
+   .black__9 {
+     grid-column: 42 / span 1;
+     grid-row: 17 / span 2;
+  }
+   .black__10 {
+     grid-column: 4 / span 1;
+     grid-row: 18 / span 2;
+  }
+   .black__11 {
+     grid-column: 27 / span 4;
+     grid-row: 20 / span 1;
+  }
+   .black__12 {
+     grid-column: 12 / span 1;
+     grid-row: 20 / span 1;
+  }
+   .black__13 {
+     grid-column: 35 / span 1;
+     grid-row: 21 / span 2;
+  }
+   .black__14 {
+     grid-column: 46 / span 2;
+     grid-row: 21 / span 1;
+  }
+   .black__15 {
+     grid-column: 19 / span 1;
+     grid-row: 24 / span 2;
+  }
+   .black__16 {
+     grid-column: 15 / span 2;
+     grid-row: 25 / span 1;
+  }
+   .black__17 {
+     grid-column: 29 / span 1;
+     grid-row: 25 / span 2;
+  }
+   .black__18 {
+     grid-column: 41 / span 1;
+     grid-row: 24 / span 2;
+  }
+   .black__19 {
+     grid-column: 10 / span 1;
+     grid-row: 25 / span 2;
+  }
+   .black__20 {
+     grid-column: 20 / span 2;
+     grid-row: 28 / span 1;
+  }
+   .black__21 {
+     grid-column: 3 / span 1;
+     grid-row: 31 / span 2;
+  }
+   .black__22 {
+     grid-column: 34 / span 1;
+     grid-row: 29 / span 2;
+  }
+   .black__23 {
+     grid-column: 42 / span 3;
+     grid-row: 33 / span 1;
+  }
+   .black__24 {
+     grid-column: 19 / span 1;
+     grid-row: 37 / span 2;
+  }
+   .black__25 {
+     grid-column: 31 / span 1;
+     grid-row: 37 / span 2;
+  }
+   .black__26 {
+     grid-column: 11 / span 2;
+     grid-row: 41 / span 1;
+  }
+   .black__27 {
+     grid-column: 34 / span 1;
+     grid-row: 40 / span 2;
+  }
+   .black__28 {
+     grid-column: 43 / span 1;
+     grid-row: 39 / span 2;
+  }
+   .black__29 {
+     grid-column: 23 / span 3;
+     grid-row: 46 / span 1;
+  }
+   
+  
+</style>
+
+<!-- 7 -->
+<style>
+
+#shadow2 {
+    box-sizing: border-box;
+    width: min(62vmin, 50rem);
+    height: auto;
+    filter: drop-shadow(5px 5px 7px #000000);
+    margin: 0;
+    padding: 0;
+  }
+
+  #svg7 {
+    box-sizing: border-box;
+    width: 100%;
+    /* aspect-ratio: 0.8; */
+    
+    /* clip-path: polygon(0 2%, 100% 2%, 100% 99%, 0 99%); */
+  }
+
+</style>
+
+<body>
+  
+
+
+  <div id="examples">
+
+    <h1>
+      ΠΑΡΑΔΕΙΓΜΑΤΑ ΑΛΓΟΡΙΘΜΙΚΗΣ ΕΙΚΑΣΤΙΚΗΣ
+      <hr>
+      <span id="subtitle">Στατικές εικαστικές παραγωγές με χρήση CSS (και svg)</span>
+    </h1>
+
+
+    <div id="examples-header">
+      <p>Τα παρακάτω παραδείγματα, εκτός από το τελευταίο, αποτελούν στατικές προσομοίωσεις έργων του Μοντριάν. Κάθε παράδειγμα έχει υλοποιηθεί αμιγώς με χρήση CSS (συγκεκριμένα με την, ιδιαιτέρως ταιριαστή για την περίσταση,  μέθοδο Grid του CSS). Η υλοποίηση με CSS είναι πολύ κοντινή-όσο μπορεί να ειπωθεί κάτι τέτοιο-στην κλασική ζωγραφική σε ψηφιακό μέσο.</p>
+      <ul>
+        <li>
+            Αφενός, οι πρώτες τέσσερις παραγωγές καθώς και η έκτη ακολουθούν το ύφος των λεγόμενων "χρωματικών συνθέσεων" του Μοντριάν.
+        </li>
+        <li>
+          Αφετέρου, η πέμπτη παραγωγή προσομοιάζει στις "συνθέσεις της Νέας Υόρκης".
+        </li>
+        <li>
+          Εξαίρεση αποτελεί το τελευταίο παράδειγμα. Πρόκειται για αρκετά πιστή προσομοίωση του έργου "Σύνθεση VII (Οι τρεις Χάριτες)", φιλοτεχνημένο από τον, επίσης πρωτοπορο του Νεπλαστικισμού, Τέο βαν Ντέσμπουργκ (Theo van Doesburg, 1883-1931). Έχει δημιουργηθεί ως Κλιμακούμενο Διανυσματικό Γραφικό (scalable vector graphic, svg), σε κατάλληλο επεξεργαστή svg, με ψηφιακή γραφίδα.
+        </li>
+      </ul>
+    </div>
+
+
+    <hr>
+
+    <div id="art-container">
+      <h2>Παράδειγμα 1</h2>
+      <div id="grid1">
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+        <div class="cell1"></div>
+      </div>
+      
+      <hr>
+      <h2>Παράδειγμα 2</h2>
+      <div id="shadow">
+        <div id="grid2">
+          <div class="cell2 d white"></div>
+          <div class="cell2 e white2"></div>
+          <div class="cell2 f yellow"></div>
+          <div class="cell2 g blue"></div>
+          <div class="cell2 h yellow"></div>
+          <div class="cell2 t white"></div>
+          <div class="cell2 i black"></div>
+          <div class="cell2 j black"></div>
+          <div class="cell2 k white"></div>
+          <div class="cell2 l yellow"></div>
+          <div class="cell2 n white2"></div>
+          <div class="cell2 u black"></div>
+          <div class="cell2 i red"></div>
+          <div class="cell2 o black"></div>
+          <div class="cell2 m blue"></div>
+          <div class="cell2 p white"></div>
+          <div class="cell2 q yellow"></div>
+          <div class="cell2 r white2"></div>
+          <div class="cell2 s red"></div>
+          <div class="cell2 a grey"></div>
+          <div class="cell2 b white"></div>
+          <div class="cell2 c yellow"></div>
+        </div>
+      </div>
+
+      <hr>
+      <h2>Παράδειγμα 3</h2>
+      <div id="frame3">
+        <div id="grid3">
+          <div class="cell3 one very-dark-blue"></div>
+          <div class="cell3 two dark-blue"></div>
+          <div class="cell3 three yellow"></div>
+          <div class="cell3 four black3"></div>
+          <div class="cell3 five dark-blue"></div>
+          <div class="cell3 six light-blue"></div>
+          <div class="cell3 seven light-blue"></div>
+          <div class="cell3 eight light-blue"></div>
+          <div class="cell3 nine beige"></div>
+          <div class="cell3 ten beige"></div>
+          <div class="cell3 eleven light-blue"></div>
+          <div class="cell3 twelve beige"></div>
+          <div class="cell3 thirteen beige"></div>
+          <div class="cell3 fourteen red3"></div>
+          <div class="cell3 fifteen very-dark-blue"></div>
+          <div class="cell3 sixteen very-dark-blue"></div>
+          <div class="cell3 seventeen beige"></div>
+          <div class="cell3 eighteen black3"></div>
+          <div class="cell3 nineteen light-blue"></div>
+          <div class="cell3 twenty red3"></div>
+          <div class="cell3 twenty-one green-blue"></div>
+          <div class="cell3 twenty-two dark-blue"></div>
+          <div class="cell3 twenty-three yellow"></div>
+          <div class="cell3 twenty-four light-blue">
+            <span class="signature"></span>
+          </div>
+          <div class="cell3 twenty-five dark-blue"></div>
+        </div>
+      </div>
+
+      <hr>
+      <h2>Παράδειγμα 4</h2>
+      <div id="grid4">
+        <div class="ltblue1 one4"></div>
+        <div class="red4 two4"></div>
+        <div class="navy three4"></div>
+        <div class="ltblue2 four4"></div>
+        <div class="navy fourhalf"></div>
+        <div class="ltblue2 five4"></div>
+        <div class="ltblue1 six4"></div>
+        <div class="navy seven4"></div>
+        <div class="ltblue1 eight4"></div>
+        <div class="ltblue2 nine4"></div>
+        <div class="ltgreen ten4"></div>
+    </div>
+
+      <hr>
+      <h2>Παράδειγμα 5</h2>
+      <div id="grid5-ny">
+        <div class="a1 yellow5"></div>
+        <div class="a2 yellow5"></div>
+        <div class="a3 yellow5"></div>
+        <div class="a4 yellow5"></div>
+        <div class="a5 yellow5"></div>
+        <div class="a6 yellow5"></div>
+        <div class="a7 yellow5"></div>
+        <div class="a8 yellow5"></div>
+        <div class="a9 yellow5"></div>
+        <div class="a10 yellow5"></div>
+        <div class="a11 yellow5"></div>
+        <div class="a12 yellow5"></div>
+        <div class="a13 yellow5"></div>
+        <div class="a14 yellow5"></div>
+        <div class="a15 yellow5"></div>
+        <div class="a16 yellow5"></div>
+        <div class="a17 yellow5"></div>
+        <div class="a18 yellow5"></div>
+        <div class="a19 yellow5"></div>
+        <div class="a20 yellow5"></div>
+        <div class="a21 yellow5"></div>
+        <div class="a22 yellow5"></div>
+        <div class="a23 yellow5"></div>
+        <div class="a24 yellow5"></div>
+        <div class="a25 yellow5"></div>
+        <div class="a26 yellow5"></div>
+        <div class="a27 yellow5"></div>
+        <div class="a28 yellow5"></div>
+        <div class="a29 yellow5"></div>
+        <div class="a30 yellow5"></div>
+        <div class="a31 yellow5"></div>
+        <div class="a32 yellow5"></div>
+        <div class="a33 yellow5"></div>
+        <div class="a34 yellow5"></div>
+        <div class="a35 yellow5"></div>
+        <div class="a36 yellow5"></div>
+        <div class="a37 yellow5"></div>
+        <div class="a38 yellow5"></div>
+        <div class="a39 yellow5"></div>
+        <div class="a40 yellow5"></div>
+        <div class="a41 yellow5"></div>
+        <div class="a42 yellow5"></div>
+        <div class="a43 yellow5"></div>
+        <div class="a44 yellow5"></div>
+        <div class="a45 yellow5"></div>
+        <div class="a46 yellow5"></div>
+        <div class="a47 yellow5"></div>
+        <div class="a48 yellow5"></div>
+        <div class="a49 yellow5"></div>
+        <div class="a50 yellow5"></div>
+        <div class="a51 yellow5"></div>
+        <div class="a52 yellow5"></div>
+        <div class="a53 yellow5"></div>
+        <div class="a54 yellow5"></div>
+        <div class="a55 yellow5"></div>
+        <div class="a56 yellow5"></div>
+        <div class="a57 yellow5"></div>
+        <div class="a58 yellow5"></div>
+        <div class="a59 yellow5"></div>
+        <div class="a60 yellow5"></div>
+        <div class="a61 yellow5"></div>
+        <div class="a62 yellow5"></div>
+        <div class="a63 yellow5"></div>
+        <div class="a64 yellow5"></div>
+        <div class="a65 yellow5"></div>
+        <div class="a66 yellow5"></div>
+        <div class="a67 yellow5"></div>
+        <div class="a68 yellow5"></div>
+        <div class="a69 yellow5"></div>
+        <div class="a70 yellow5"></div>
+        <div class="a71 yellow5"></div>
+        <div class="a72 yellow5"></div>
+        <div class="a73 yellow5"></div>
+        <div class="a74 yellow5"></div>
+        <div class="a75 yellow5"></div>
+        <div class="a76 yellow5"></div>
+        <div class="a77 yellow5"></div>
+        <div class="a78 blue5"></div>
+        <div class="a79 blue5"></div>
+        <div class="a80 blue5"></div>
+        <div class="a81 blue5"></div>
+        <div class="a82 blue5"></div>
+        <div class="a83 blue5"></div>
+        <div class="a84 blue5"></div>
+        <div class="a85 blue5"></div>
+        <div class="a86 blue5"></div>
+        <div class="a87 blue5"></div>
+        <div class="a88 blue5"></div>
+        <div class="a89 blue5"></div>
+        <div class="a90 blue5"></div>
+        <div class="a91 blue5"></div>
+        <div class="a92 blue5"></div>
+        <div class="a93 blue5"></div>
+        <div class="a94 blue5"></div>
+        <div class="a95 blue5"></div>
+        <div class="a96 blue5"></div>
+        <div class="a97 blue5"></div>
+        <div class="a98 blue5"></div>
+        <div class="a99 blue5"></div>
+        <div class="a100 blue5"></div>
+        <div class="a101 blue5"></div>
+        <div class="a102 blue5"></div>
+        <div class="a103 blue5"></div>
+        <div class="a104 blue5"></div>
+        <div class="a105 blue5"></div>
+        <div class="a106 blue5"></div>
+        <div class="a107 blue5"></div>
+        <div class="a108 blue5"></div>
+        <div class="a109 blue5"></div>
+        <div class="a110 blue5"></div>
+        <div class="a111 blue5"></div>
+        <div class="a112 blue5"></div>
+        <div class="a113 blue5"></div>
+        <div class="a114 blue5"></div>
+        <div class="a115 blue5"></div>
+        <div class="a116 blue5"></div>
+        <div class="a117 blue5"></div>
+        <div class="a118 blue5"></div>
+        <div class="a119 blue5"></div>
+        <div class="a120 blue5"></div>
+        <div class="a121 blue5"></div>
+        <div class="a122 blue5"></div>
+        <div class="a123 red5"></div>
+        <div class="a124 red5"></div>
+        <div class="a125 red5"></div>
+        <div class="a126 red5"></div>
+        <div class="a127 red5"></div>
+        <div class="a128 red5"></div>
+        <div class="a129 red5"></div>
+        <div class="a130 red5"></div>
+        <div class="a131 red5"></div>
+        <div class="a132 red5"></div>
+        <div class="a133 red5"></div>
+        <div class="a134 red5"></div>
+        <div class="a135 red5"></div>
+        <div class="a136 red5"></div>
+        <div class="a137 red5"></div>
+        <div class="a138 red5"></div>
+        <div class="a139 red5"></div>
+        <div class="a140 red5"></div>
+        <div class="a141 red5"></div>
+        <div class="a142 red5"></div>
+        <div class="a143 red5"></div>
+        <div class="a144 red5"></div>
+        <div class="a145 red5"></div>
+        <div class="a146 red5"></div>
+        <div class="a147 red5"></div>
+        <div class="a148 red5"></div>
+        <div class="a149 red5"></div>
+        <div class="a150 red5"></div>
+        <div class="a151 red5"></div>
+        <div class="a152 red5"></div>
+        <div class="a153 red5"></div>
+        <div class="a154 red5"></div>
+        <div class="a155 red5"></div>
+      </div>
+
+      <hr>
+      <h2>Παράδειγμα 6</h2>
+      <div id="grid6">
+        <div class="pink6 pink__1"></div>
+        <div class="pink6 pink__2"></div>
+        <div class="pink6 pink__3"></div>
+        <div class="pink6 pink__4"></div>
+        <div class="pink6 pink__5"></div>
+        <div class="pink6 pink__6"></div>
+    
+        <div class="blue6 blue__1"></div>
+        <div class="blue6 blue__2"></div>
+        <div class="blue6 blue__3"></div>
+        <div class="blue6 blue__4"></div>
+        <div class="blue6 blue__5"></div>
+        <div class="blue6 blue__6"></div>
+        <div class="blue6 blue__7"></div>
+        <div class="blue6 blue__8"></div>
+    
+        <div class="orange6 orange__1"></div>
+        <div class="orange6 orange__2"></div>
+        <div class="orange6 orange__3"></div>
+        <div class="orange6 orange__4"></div>
+        <div class="orange6 orange__5"></div>
+        <div class="orange6 orange__6"></div>
+        <div class="orange6 orange__7"></div>
+        <div class="orange6 orange__8"></div>
+        <div class="orange6 orange__9"></div>
+        <div class="orange6 orange__10"></div>
+        <div class="orange6 orange__11"></div>
+        
+        <div class="black6 black__1"></div>
+        <div class="black6 black__2"></div>
+        <div class="black6 black__3"></div>
+        <div class="black6 black__4"></div>
+        <div class="black6 black__5"></div>
+        <div class="black6 black__6"></div>
+        <div class="black6 black__7"></div>
+        <div class="black6 black__8"></div>
+        <div class="black6 black__9"></div>
+        <div class="black6 black__10"></div>
+        <div class="black6 black__11"></div>
+        <div class="black6 black__12"></div>
+        <div class="black6 black__13"></div>
+        <div class="black6 black__14"></div>
+        <div class="black6 black__15"></div>
+        <div class="black6 black__16"></div>
+        <div class="black6 black__17"></div>
+        <div class="black6 black__18"></div>
+        <div class="black6 black__19"></div>
+        <div class="black6 black__20"></div>
+        <div class="black6 black__21"></div>
+        <div class="black6 black__22"></div>
+        <div class="black6 black__23"></div>
+        <div class="black6 black__24"></div>
+        <div class="black6 black__25"></div>
+        <div class="black6 black__26"></div>
+        <div class="black6 black__27"></div>
+        <div class="black6 black__28"></div>
+        <div class="black6 black__29"></div>
+      </div>
+
+      <hr>
+      <h2>Παράδειγμα 7</h2>
+      <div id="shadow2">
+        <svg
+        viewBox="0 0 208 230"
+        version="1.1"
+        id="svg7"
+        xml:space="preserve"
+        inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+        sodipodi:docname="doesburg_ink_4_plain.svg"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+        
+
+
+          <defs
+          id="defs2">         
+          <linearGradient
+            inkscape:collect="always"
+            id="linearGradient7777"><stop
+              style="stop-color:#000000;stop-opacity:1;"
+              offset="0"
+              id="stop7773" /><stop
+              style="stop-color:#000000;stop-opacity:0;"
+              offset="1"
+              id="stop7775" />
+            </linearGradient>
+              <radialGradient
+            inkscape:collect="always"
+            xlink:href="#linearGradient7777"
+            id="radialGradient7781"
+            cx="105.26582"
+            cy="121.74976"
+            fx="105.26582"
+            fy="121.74976"
+            r="105.10911"
+            gradientTransform="matrix(1,0,0,1.1568269,0,-19.093642)"
+            gradientUnits="userSpaceOnUse" /></defs><g
+          inkscape:label="image"
+          inkscape:groupmode="layer"
+          id="layer1"
+          transform="matrix(1,0,0,1.244274,-0.1567053,-0.23545404)"
+          style="display:none"
+          sodipodi:insensitive="true">
+          <image
+            width="209.36597"
+            height="195.0517"
+            preserveAspectRatio="none"
+            style="display:none;image-rendering:optimizeQuality"
+            id="image17"
+            x="0.32237387"
+            y="0.32237875"
+            sodipodi:insensitive="true" /></g><g
+          inkscape:groupmode="layer"
+          id="layer3"
+          inkscape:label="background"
+          style="display:inline;fill:#0000ff"
+          transform="translate(-0.1567053,-0.1567053)"><rect
+            style="display:inline;opacity:1;fill:#140f19;fill-opacity:1;stroke:url(#radialGradient7781);stroke-width:0.264973;stroke-opacity:1;image-rendering:auto"
+            id="rect7522"
+            width="209.95325"
+            height="242.92113"
+            x="0.28919181"
+            y="0.28919181"
+            sodipodi:insensitive="true" /></g><g
+          inkscape:groupmode="layer"
+          id="layer2"
+          inkscape:label="draw"
+          style="display:inline;fill:#0000ff"
+          transform="translate(-0.1567053,-0.1567053)"><rect
+            style="fill:#9b3223;fill-opacity:1;stroke-width:0.138745"
+            id="rect421-7-5-3"
+            width="10.476851"
+            height="24.848621"
+            x="50.351154"
+            y="39.460918"
+            transform="matrix(0.996513,0.08343764,-0.00191341,0.99999817,0,0)"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#9b3223;fill-opacity:1;stroke-width:0.22619"
+            id="rect421-7-5-3-66"
+            width="18.022598"
+            height="38.390404"
+            x="121.42481"
+            y="161.01334"
+            transform="matrix(0.99999964,-8.4363188e-4,-0.00464592,0.99998921,0,0)"
+            inkscape:transform-center-x="-13.447055"
+            inkscape:transform-center-y="-1.3108377"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#e6e6d7;fill-opacity:1;stroke-width:0.26867"
+            id="rect421-7-5-3-66-9"
+            width="13.16297"
+            height="74.161598"
+            x="4.1020327"
+            y="107.82408"
+            transform="matrix(0.99999751,-0.0022314,-0.00175651,0.99999846,0,0)"
+            inkscape:transform-center-x="-9.8211587"
+            inkscape:transform-center-y="-2.5322632"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#e6e6d7;fill-opacity:1;stroke-width:0.218555"
+            id="rect421-7-5-3-66-9-7"
+            width="47.990463"
+            height="13.460532"
+            x="108.5218"
+            y="109.40455"
+            transform="matrix(0.99999999,-1.1101705e-4,-0.03528338,0.99937735,0,0)"
+            inkscape:transform-center-x="-35.806742"
+            inkscape:transform-center-y="-0.4593221"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#e6e6d7;fill-opacity:1;stroke-width:0.167056"
+            id="rect421-7-5-3-66-9-7-7"
+            width="11.340572"
+            height="33.279968"
+            x="154.0155"
+            y="128.83621"
+            transform="matrix(0.99999932,-0.00116225,-0.00337232,0.99999431,0,0)"
+            inkscape:transform-center-x="-8.4614577"
+            inkscape:transform-center-y="-1.1363378"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#e6e6d7;fill-opacity:1;stroke-width:0.149577"
+            id="rect421-7-5-3-66-9-7-7-3"
+            width="23.676317"
+            height="12.779394"
+            x="188.79846"
+            y="77.877861"
+            transform="matrix(0.99939027,0.03491553,-0.05105954,0.99869561,0,0)"
+            inkscape:transform-center-x="-17.668835"
+            inkscape:transform-center-y="0.18451526"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.191187"
+            id="rect421-7-5-3-66-9-7-7-3-9"
+            width="11.814347"
+            height="41.840946"
+            x="17.884392"
+            y="59.24361"
+            transform="matrix(0.99884493,-0.04805002,0.00445839,0.99999006,0,0)"
+            inkscape:transform-center-x="-8.794506"
+            inkscape:transform-center-y="-1.8396341"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.192811"
+            id="rect421-7-5-3-66-9-7-7-3-9-8"
+            width="12.015872"
+            height="41.840958"
+            x="24.156733"
+            y="123.67823"
+            transform="matrix(0.99923901,-0.03900519,-0.0039963,0.99999201,0,0)"
+            inkscape:transform-center-x="-8.9601336"
+            inkscape:transform-center-y="-1.7658001"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.206219"
+            id="rect421-7-5-3-66-9-7-7-3-9-9"
+            width="11.075352"
+            height="51.926983"
+            x="102.73376"
+            y="53.090244"
+            transform="matrix(0.99932706,-0.0366802,-0.02029862,0.99979396,0,0)"
+            inkscape:transform-center-x="-8.2899796"
+            inkscape:transform-center-y="-2.0602894"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.163063"
+            id="rect421-7-5-3-66-9-7-7-3-9-1"
+            width="17.238319"
+            height="20.860083"
+            x="85.100128"
+            y="140.89206"
+            transform="matrix(0.99986523,-0.01641686,0.01306147,0.9999147,0,0)"
+            inkscape:transform-center-x="-12.845181"
+            inkscape:transform-center-y="-0.91708608"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.282836"
+            id="rect421-7-5-3-66-9-7-7-3-9-3"
+            width="67.565536"
+            height="16.011875"
+            x="77.391747"
+            y="207.91983"
+            transform="matrix(0.99987299,0.0159372,0.04916944,0.99879045,0,0)"
+            inkscape:transform-center-x="-50.356511"
+            inkscape:transform-center-y="0.26174261"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.21639"
+            id="rect421-7-5-3-66-9-7-7-3-9-0"
+            width="9.8265285"
+            height="65.299698"
+            x="184.59981"
+            y="194.19493"
+            transform="matrix(0.99645097,-0.08417525,-0.00217161,0.99999764,0,0)"
+            inkscape:transform-center-x="-7.3073047"
+            inkscape:transform-center-y="-2.8271896"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#c8af69;fill-opacity:1;stroke-width:0.213875"
+            id="rect421-7-5-3-66-9-7-7-3-9-6"
+            width="11.823244"
+            height="52.321457"
+            x="163.0567"
+            y="52.953381"
+            transform="matrix(0.99886921,-0.04754267,-0.01085773,0.99994105,0,0)"
+            inkscape:transform-center-x="-8.8268842"
+            inkscape:transform-center-y="-2.1901448"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#e6e6d7;fill-opacity:1;stroke-width:0.164866"
+            id="rect421-7-5-3-66-9-0"
+            width="29.564272"
+            height="12.433547"
+            x="38.83569"
+            y="83.460258"
+            transform="matrix(0.99989785,0.01429309,-0.0379846,0.99927832,0,0)"
+            inkscape:transform-center-x="-22.062393"
+            inkscape:transform-center-y="-0.10543661"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#e6e6d7;fill-opacity:1;stroke-width:0.252944"
+            id="rect421-7-5-3-66-9-0-8"
+            width="10.863845"
+            height="79.646408"
+            x="69.657082"
+            y="65.908493"
+            transform="matrix(0.99808354,0.06188095,0.0062282,0.9999806,0,0)"
+            inkscape:transform-center-x="-8.069799"
+            inkscape:transform-center-y="-2.1946517"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#9b3223;fill-opacity:1;stroke-width:0.117623"
+            id="rect421-7-5-3-6"
+            width="18.995018"
+            height="9.850008"
+            x="52.270008"
+            y="153.97278"
+            transform="matrix(0.99997818,0.00660629,-0.01036046,0.99994633,0,0)"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#9b3223;fill-opacity:1;stroke-width:0.196346"
+            id="rect421-7-5-3-6-4"
+            width="42.649868"
+            height="12.22417"
+            x="16.834106"
+            y="207.95686"
+            transform="matrix(0.99985585,0.01697866,0.00517798,0.99998659,0,0)"
+            sodipodi:insensitive="true" /><rect
+            style="opacity:1;fill:#23376e;fill-opacity:1;stroke-width:0.264583"
+            id="rect421"
+            width="57.870525"
+            height="16.359159"
+            x="28.834547"
+            y="176.3558"
+            transform="rotate(1.5181469)"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#23376e;fill-opacity:1;stroke-width:0.129755"
+            id="rect421-3"
+            width="9.2020245"
+            height="24.743229"
+            x="129.95308"
+            y="36.399132"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#23376e;fill-opacity:1;stroke-width:0.158726"
+            id="rect421-7"
+            width="17.177116"
+            height="19.83548"
+            x="110.52658"
+            y="131.69124"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#9b3223;fill-opacity:1;stroke-width:0.14235"
+            id="rect421-7-5"
+            width="14.703527"
+            height="18.63751"
+            x="148.06287"
+            y="1.4102455"
+            transform="matrix(0.99794306,0.06410652,-0.08480502,0.99639757,0,0)"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#23376e;fill-opacity:1;stroke-width:0.174373"
+            id="rect421-7-1"
+            width="8.3473444"
+            height="49.261318"
+            x="177.22644"
+            y="117.1297"
+            transform="matrix(0.99945453,0.03302474,-0.01890228,0.99982134,0,0)"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#23376e;fill-opacity:1;stroke-width:0.159882"
+            id="rect421-47"
+            width="20.871927"
+            height="16.562677"
+            x="14.838428"
+            y="-50.0051"
+            transform="matrix(0.0037328,0.99999303,-0.99999989,4.7369895e-4,0,0)"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#23376e;fill-opacity:1;stroke-width:0.111698"
+            id="rect421-4"
+            width="21.543455"
+            height="7.8319449"
+            x="88.308701"
+            y="-56.320091"
+            transform="matrix(-0.00261632,1.2442697,-0.99999874,-0.00196837,0,-0.07874874)"
+            sodipodi:insensitive="true" /><rect
+            style="fill:#23376e;fill-opacity:1;stroke-width:0.210572"
+            id="rect421-37"
+            width="9.1070004"
+            height="65.845619"
+            x="197.27303"
+            y="-0.80726606"
+            transform="rotate(2.6197355)"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#9b3223;fill-opacity:1;stroke-width:0.114132"
+            id="rect421-7-5-3-66-4"
+            width="18.022593"
+            height="9.7744207"
+            x="130.7963"
+            y="69.717499"
+            transform="matrix(0.9994947,0.03178592,-0.0502334,0.99873751,0,0)"
+            inkscape:transform-center-x="-13.450841"
+            inkscape:transform-center-y="0.096782135"
+            sodipodi:insensitive="true" /><rect
+            style="display:inline;fill:#9b3223;fill-opacity:1;stroke-width:0.134733"
+            id="rect421-7-5-3-66-4-0"
+            width="19.975227"
+            height="12.289783"
+            x="196.3642"
+            y="123.28195"
+            transform="matrix(0.99866682,0.05161963,-0.0660182,0.99781842,0,0)"
+            inkscape:transform-center-x="-14.904847"
+            inkscape:transform-center-y="0.35389155"
+            sodipodi:insensitive="true" /></g>
+        </svg>
+      </div>
+
+      <hr>
+      
+    </div>
+  </div>
+
+  <div id="links">
+    <ul> 
+      <li onclick="location.href='1_intro.html'">Εισαγωγή</li>
+      <li onclick="location.href='2_hypertext.html'">HTML</li>
+      <li onclick="location.href='3_CSS.html'">CSS</li>
+      <li onclick="location.href='4_javascript.html'">JavaScript</li>
+      <li onclick="location.href='5_mondrian_CSS_1.html'">Mondrian CSS: 1</li>
+      <li onclick="location.href='6_mondrian_CSS_2.html'">Mondrian CSS: 2</li>
+      <li onclick="location.href='7_mondrian_JS.html'">Mondrian JS</li>
+      <li onclick="location.href='8_end.html'">Επίλογος</li>
+    </ul>
+  </div>
+
+
+</body>
+</html>
