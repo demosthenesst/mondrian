@@ -37,8 +37,8 @@
 
     #grid-container {
         display: grid;
-        grid-template-columns: 1.1fr 1fr 1.2fr 1fr;
-        grid-template-rows: 2fr 1.3fr 1.8fr 1.1fr 0.6fr auto 0.9fr;
+        grid-template-columns: 1fr 1fr 1.4fr 1fr;
+        grid-template-rows: 2fr 1.3fr 1.8fr 1.1fr 0.6fr auto 1.1fr auto;
         grid-auto-flow: row;
         align-self: center;
         gap: 10px;
@@ -110,13 +110,6 @@
         justify-content: center;
     }
 
-    #links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        grid-column: 3 / 5;
-    }
-
     .white {
         background-color: var(--my-white);
     }
@@ -139,18 +132,17 @@
 
     ul {
         list-style-type: none;
-        display:grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 1.5rem;
-        row-gap: 0.5rem;
+        display:flex;
+        flex-wrap: wrap;
         padding: 0;
-        font-size: small;
+        justify-content: space-evenly;
     }
 
     li {
-        margin-left: 0;
         color:blanchedalmond;
+        font-weight: 700;
         transition: 0.8s;
+        text-decoration: underline;
     }
 
     li:hover {
@@ -206,9 +198,10 @@
         
         <div class="yellow" style="grid-row: span 3;"></div>  
         
-
+        <div class="blue" style="grid-column: 3 / 5;"></div>
     
-        <div id="links" class="blue">
+        
+        <div id="links" class="black" style="grid-column: 1 / span 3;">
             <ul>
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/2_hypertext.html'">HTML</li>
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/3_CSS.html'">CSS</li>
@@ -220,6 +213,9 @@
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/8_end.html'">Επίλογος</li>
             </ul>
         </div>
+
+        <div class="white"></div>
+
     </div>
 
 </body>
