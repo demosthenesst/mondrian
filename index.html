@@ -112,17 +112,16 @@
         grid-column: 3;
     }
 
-    #links {          
-        grid-column: 1 / span 3;
-        padding: 0.5rem;
-    }
-
     ul {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         list-style-type: none;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        grid-column: 1 / span 3;
+        padding: 0.5rem;
+        margin: 0;
+
     }
 
     li {
@@ -214,8 +213,7 @@
         
     
         
-        <div id="links" class="blue">
-            <ul>
+            <ul  id="links" class="blue">
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/2_hypertext.html'">HTML</li>
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/3_CSS.html'">CSS</li>
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/4_javascript.html'">JavaScript</li>
@@ -224,8 +222,6 @@
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/7_mondrian_JS.html'">Mondrian JS</li>
                 <li onclick="location.href='https://demosthenesst.github.io/mondrian/8_end.html'">Επίλογος</li>
             </ul>
-        </div>
-
     </div>
 
 </body>
